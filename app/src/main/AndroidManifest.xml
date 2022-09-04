@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.enescakar.istexprs">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,10 +13,25 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.IstExprs"
+        android:theme="@style/Theme.MaterialComponents.Light.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".UI.Home"
+            android:exported="false" />
+        <activity
+            android:name=".UI.AdminKuryeMapSteramScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.AdminHomeScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.RegisterScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.LoginScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
