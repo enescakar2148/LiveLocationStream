@@ -11,6 +11,7 @@ import com.enescakar.istexprs.Model.User;
 import com.enescakar.istexprs.R;
 import com.enescakar.istexprs.System.Auth;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterScreen extends AppCompatActivity {
 
@@ -41,7 +42,7 @@ public class RegisterScreen extends AppCompatActivity {
                     pass.getText().toString(),
                     passAgain.getText().toString(),
                     kuryeNo.getText().toString()
-            ));
+            ), FirebaseAuth.getInstance());
 
             if (auth.register(this)){
                 startActivity(new Intent(RegisterScreen.this, Home.class));

@@ -22,6 +22,10 @@ public class User {
         this.passAgain = passAgain;
         this.kuryeNumber = kuryeNumber;
     }
+    public User(String mail, String pass) {
+        this.mail = mail;
+        this.pass = pass;
+    }
 
     public String getPlaka() {
         return plaka;

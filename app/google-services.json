@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "207130948751",
+    "project_id": "istexp-11b43",
+    "storage_bucket": "istexp-11b43.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207130948751:android:3f3f92f7c4cd1080a9ecfa",
+        "android_client_info": {
+          "package_name": "com.enescakar.istexprs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "207130948751-jhmr0k9bhl7k3fjqj0f8pm8h02fmgboq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm8y12wKfJtZ1qlJaHGSAMAOICelQKWdM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "207130948751-jhmr0k9bhl7k3fjqj0f8pm8h02fmgboq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
