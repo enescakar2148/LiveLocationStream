@@ -8,13 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.enescakar.istexprs.Model.User;
 import com.enescakar.istexprs.R;
-import com.enescakar.istexprs.System.Auth;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,7 +40,7 @@ public class LoginScreen extends AppCompatActivity {
 
 
     public void loginBtn(View v) {
-        if (!mailText.getText().toString().matches("") ||
+        if (!mailText.getText().toString().matches("") &&
                 !passText.getText().toString().matches("") &&
                         mailText.getText().toString().matches(adminUserName) &&
                         passText.getText().toString().matches(adminPass)) {
@@ -63,9 +59,21 @@ public class LoginScreen extends AppCompatActivity {
                         }
                     });
 
-        } else if (mailText.getText().toString().matches("") ||
-                passText.getText().toString().matches("")) {
-
+        } else if (!mailText.getText().toString().matches("") &&
+                !passText.getText().toString().matches("")) {
+            mAuth.signInWithEmailAndPassword(mailText.getText().toString().toLowerCase(Locale.ROOT), passText.getText().toString())
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            startActivity(new Intent(LoginScreen.this, Home.class));
+                            finish();
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(LoginScreen.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
         } else {
             Toast.makeText(this, "Lutfen alanlarin bos olmadigindan veya kullanici adi/sifresinin dogrulugundan emin olun!", Toast.LENGTH_LONG).show();
         }

@@ -3,9 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.enescakar.istexprs">
 
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -20,6 +24,9 @@
             android:exported="false" />
         <activity
             android:name=".UI.AdminKuryeMapSteramScreen"
+            android:exported="false" />
+        <activity
+            android:name=".UI.AdminKuryeDetailsScreen"
             android:exported="false" />
         <activity
             android:name=".UI.AdminHomeScreen"
@@ -39,6 +46,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyA4s6CgTCjdJhGN_s4QmyGgY8snjDYPqhw" />
     </application>
 
 </manifest>
