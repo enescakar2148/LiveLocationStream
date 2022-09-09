@@ -40,6 +40,7 @@
                         android:textColor="#FFCB42"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/kuryeNoText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="71"/>
@@ -56,6 +57,7 @@
                         android:textColor="#FFCB42"
                         android:textSize="24sp"/>
                     <TextView
+                        android:id="@+id/plakaText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="34LT0245"/>

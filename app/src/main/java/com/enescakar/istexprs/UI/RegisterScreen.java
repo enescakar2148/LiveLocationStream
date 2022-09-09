@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.enescakar.istexprs.Model.User;
 import com.enescakar.istexprs.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -58,6 +57,8 @@ public class RegisterScreen extends AppCompatActivity {
                                  map.put("pass", pass.getText().toString());
                                  map.put("plaka", plaka.getText().toString().toUpperCase());
                                  map.put("kuryeNo", kuryeNo.getText().toString());
+                                 map.put("kuryeId", auth.getCurrentUser().getUid());
+
 
                                  reference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(map)
                                          .addOnCompleteListener(new OnCompleteListener<Void>() {

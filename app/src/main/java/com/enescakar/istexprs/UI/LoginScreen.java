@@ -19,7 +19,7 @@ import java.util.Locale;
 
 public class LoginScreen extends AppCompatActivity {
     private final String adminUserName = "fatihistexp@mail.com";
-    private final String adminPass = "fatih1234fa";
+    private final String adminPass = "fatih1234";
 
     private TextInputEditText mailText;
     private TextInputEditText passText;
