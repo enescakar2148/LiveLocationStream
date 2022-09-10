@@ -40,22 +40,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Home extends AppCompatActivity implements LocationListener{
+public class Home extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     private static final int GPS_TIME_INTERVAL = 1000 * 60 * 5; // get gps location every 1 min
     private static final int GPS_DISTANCE = 1000; // set the distance value in meter
-    private static final int HANDLER_DELAY = 1000  * 3;
+    private static final int HANDLER_DELAY = 1000 * 60 * 5;
     private static final int START_HANDLER_DELAY = 0;
 
 
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     final static int PERMISSION_ALL = 1;
-    Handler handler = new Handler();
+    private Handler handler = new Handler();
 
-    FirebaseDatabase database;
-    DatabaseReference reference;
-    String uuid;
-    String date;
+    private FirebaseDatabase database;
+    private DatabaseReference reference;
+    private String uuid;
+    private String date;
     private Button button;
 
     boolean handlerIsStart = true;
@@ -80,8 +80,6 @@ public class Home extends AppCompatActivity implements LocationListener{
         }
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        //getDistance();
-
 
     }
 
@@ -127,7 +125,7 @@ public class Home extends AppCompatActivity implements LocationListener{
         String recordTimestapm = String.valueOf(Timestamp.from(Instant.ofEpochSecond(System.currentTimeMillis())).getTime());
 
         reference.child(uuid).child(date).child(recordTimestapm).setValue(latLng)
-               .addOnCompleteListener(new OnCompleteListener<Void>() {
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
@@ -138,7 +136,6 @@ public class Home extends AppCompatActivity implements LocationListener{
                         }
                     }
                 });
-        // System.out.println(location.getLatitude());
         locationManager.removeUpdates(Home.this);
     }
 

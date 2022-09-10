@@ -18,6 +18,9 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polygon;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +32,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapReadyCallback {
+public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnPolylineClickListener,
+        GoogleMap.OnPolygonClickListener {
 
 
     /*
@@ -112,10 +116,27 @@ public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapR
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         System.out.println(locations.size());
+        PolylineOptions options = new PolylineOptions();
         for (Locations location: locations) {
+
             LatLng loc = new LatLng(Double.parseDouble(location.getLatitude()), Double.parseDouble(location.getLongitude()));
-            googleMap.addMarker(new MarkerOptions().position(loc).title("Buraya Time Eklenecek"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+            googleMap.addPolyline(options.clickable(true).width(2).add(loc));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.parseDouble(locations.get(0).getLatitude()), Double.parseDouble(locations.get(0).getLongitude())), 10));
+
+
         }
+
+        googleMap.setOnPolylineClickListener(this);
+        googleMap.setOnPolygonClickListener(this);
+    }
+
+    @Override
+    public void onPolygonClick(@NonNull Polygon polygon) {
+
+    }
+
+    @Override
+    public void onPolylineClick(@NonNull Polyline polyline) {
+
     }
 }
