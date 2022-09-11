@@ -14,8 +14,6 @@
         android:paddingVertical="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
@@ -81,6 +79,7 @@
             android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
             android:onClick="kuryeStartStop"
             android:text="Kaydi Baslat"
             android:textColor="#fff"
@@ -89,12 +88,30 @@
             app:cornerRadius="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/kuryeNo"
-            app:layout_constraintStart_toStartOf="@+id/kuryeNo"
 
+            app:layout_constraintStart_toStartOf="@+id/kuryeNo"
             app:rippleColor="#FFCB42"
             app:strokeColor="#fff"
-            app:strokeWidth="1dp"
-            android:layout_marginBottom="150dp"/>
+            app:strokeWidth="1dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="24dp"
+            android:onClick="kuryeLogOut"
+            android:text="Cikis Yap"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:backgroundTint="@android:color/transparent"
+            app:cornerRadius="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@android:color/holo_red_dark"
+            app:strokeColor="#fff"
+            app:strokeWidth="1dp" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 

@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -221,5 +222,12 @@ public class Home extends AppCompatActivity implements LocationListener {
             finish();
         }
 
+    }
+
+    public void kuryeLogOut(View view){
+        Toast.makeText(this, "Cikis Yapildi...", Toast.LENGTH_SHORT).show();
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(Home.this, LoginScreen.class));
+        finish();
     }
 }
