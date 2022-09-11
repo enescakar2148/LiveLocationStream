@@ -47,7 +47,7 @@ public class Home extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     private static final int GPS_TIME_INTERVAL = 1000 * 60 * 5; // get gps location every 1 min
     private static final int GPS_DISTANCE = 1000; // set the distance value in meter
-    private static final int HANDLER_DELAY = 1000 * 60 * 5;
+    private static final int HANDLER_DELAY = 1000 * 60;
     private static final int START_HANDLER_DELAY = 0;
 
 
