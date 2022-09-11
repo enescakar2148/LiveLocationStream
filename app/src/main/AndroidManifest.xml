@@ -23,9 +23,6 @@
             android:name=".UI.Home"
             android:exported="false" />
         <activity
-            android:name=".UI.AdminKuryeMapSteramScreen"
-            android:exported="false" />
-        <activity
             android:name=".UI.AdminKuryeDetailsScreen"
             android:exported="false" />
         <activity

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.enescakar.istexprs.Model.Locations;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -43,7 +46,7 @@ public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapR
      */
 
     private FirebaseDatabase database;
-    private DatabaseReference reference;
+    private DatabaseReference reference, errorLogsRef;
     private String kuryeId;
     private ArrayList<String> dateList;
     private ArrayList<Locations> locations;
@@ -62,7 +65,6 @@ public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapR
 
         Intent intent = getIntent();
         kuryeId = intent.getStringExtra("kuryeId");
-        System.out.println(kuryeId);
 
         mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
 
@@ -106,6 +108,25 @@ public class AdminKuryeDetailsScreen extends AppCompatActivity implements OnMapR
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                errorLogsRef = database.getReference("Error_Logs");
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("ErrorCode", 114);
+                map.put("ErrorSource", "AdminKuryeDetails Class");
+                map.put("ErrorTitle", "Lokasyonlarin Alinmasi Sirasinda Hata");
+                map.put("ErrorDetailsFromDeveloper", "Kuryenin gittigi lokasyonlarin alinmasi sirasinda hata alindi");
+                map.put("ErrorDetailsFromFirebase", error.getDetails());
+                map.put("HataAlanKuryeMail", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+                errorLogsRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Log.d("error114", "basarili");
+                        } else {
+                            Toast.makeText(AdminKuryeDetailsScreen.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
                 Toast.makeText(AdminKuryeDetailsScreen.this, error.getDetails(), Toast.LENGTH_SHORT).show();
             }
         };

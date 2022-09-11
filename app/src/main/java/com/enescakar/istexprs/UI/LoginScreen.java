@@ -14,6 +14,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Locale;
 
@@ -36,6 +38,7 @@ public class LoginScreen extends AppCompatActivity {
         passText = findViewById(R.id.loginPassText);
 
         mAuth = FirebaseAuth.getInstance();
+
     }
 
 

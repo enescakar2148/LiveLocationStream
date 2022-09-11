@@ -13,8 +13,10 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.enescakar.istexprs.R;
@@ -53,12 +55,13 @@ public class Home extends AppCompatActivity implements LocationListener {
     private Handler handler = new Handler();
 
     private FirebaseDatabase database;
-    private DatabaseReference reference;
+    private DatabaseReference reference,  errorLogsRef;
     private String uuid;
     private String date;
     private Button button;
 
     boolean handlerIsStart = true;
+    private TextView dateText, kuryeNoText, plakaText;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -74,6 +77,48 @@ public class Home extends AppCompatActivity implements LocationListener {
 
         uuid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        dateText = findViewById(R.id.date);
+        kuryeNoText = findViewById(R.id.kuryeNo);
+        plakaText = findViewById(R.id.plaka);
+
+        dateText.setText(date);
+
+        DatabaseReference reference = database.getReference("Kuryeler");
+        reference.child(uuid).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot != null){
+                    HashMap<String, Object> map = (HashMap<String, Object>) snapshot.getValue();
+                    kuryeNoText.setText(map.get("kuryeNo") + " Numarali Kurye");
+                    plakaText.setText(String.valueOf(map.get("plaka")));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                errorLogsRef = database.getReference("Error_Logs");
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("ErrorCode", 98);
+                map.put("ErrorSource", "Home Class");
+                map.put("ErrorTitle", "Kurye Bilgileri Alinmasi Sirasinda Hata");
+                map.put("ErrorDetailsFromDeveloper", "Kurye anasayfasinda gosterilmek uzere kurye bilgileri alinmasi sirasinda hata cikti");
+                map.put("ErrorDetailsFromFirebase", error.getDetails());
+                map.put("HataAlanKuryeMail", FirebaseAuth.getInstance().getCurrentUser().getEmail());
+
+                errorLogsRef.child(uuid).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Log.d("error98", "basarili");
+                        } else {
+                            Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
+
 
         if (Build.VERSION.SDK_INT >= 23) {
             requestPermissions(PERMISSIONS, PERMISSION_ALL);
@@ -88,7 +133,7 @@ public class Home extends AppCompatActivity implements LocationListener {
         if (handlerIsStart) {
             handler.removeCallbacksAndMessages(null);
             handlerIsStart = !handlerIsStart;
-            button.setText("Start");
+            button.setText("Kaydi Baslat");
         } else {
             handler.postDelayed(new Runnable() {
                 public void run() {
@@ -97,7 +142,7 @@ public class Home extends AppCompatActivity implements LocationListener {
                 }
             }, START_HANDLER_DELAY);
             handlerIsStart = !handlerIsStart;
-            button.setText("Stop");
+            button.setText("Kaydi Durdur");
 
         }
     }
@@ -119,7 +164,7 @@ public class Home extends AppCompatActivity implements LocationListener {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        Toast.makeText(Home.this, "Got Coordinates: " + location.getLatitude() + ", " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(Home.this, "Konum Basariyla Alindi...", Toast.LENGTH_SHORT).show();
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         String recordTimestapm = String.valueOf(Timestamp.from(Instant.ofEpochSecond(System.currentTimeMillis())).getTime());
@@ -128,8 +173,7 @@ public class Home extends AppCompatActivity implements LocationListener {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            System.out.println("Recording");
+                        if (task.isSuccessful()) {;
                         } else {
                             System.out.println(task.getException().getLocalizedMessage());
                             Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -160,7 +204,7 @@ public class Home extends AppCompatActivity implements LocationListener {
             if (handlerIsStart) {
                 handler.removeCallbacksAndMessages(null);
                 handlerIsStart = !handlerIsStart;
-                button.setText("Start");
+                button.setText("Kaydi Baslat");
 
 
             } else {
@@ -171,7 +215,7 @@ public class Home extends AppCompatActivity implements LocationListener {
                     }
                 }, START_HANDLER_DELAY);
                 handlerIsStart = !handlerIsStart;
-                button.setText("Stop");
+                button.setText("Kaydi Durdur");
             }
         } else {
             finish();

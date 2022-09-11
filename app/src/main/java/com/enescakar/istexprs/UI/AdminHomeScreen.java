@@ -6,10 +6,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.enescakar.istexprs.Model.Kurye;
 import com.enescakar.istexprs.R;
 import com.enescakar.istexprs.System.Adapters.AdminRecyclerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +28,7 @@ import java.util.Map;
 public class AdminHomeScreen extends AppCompatActivity {
 
 
-    private DatabaseReference reference;
+    private DatabaseReference reference, errorLogsRef;
     private FirebaseDatabase database;
     private ValueEventListener eventListener;
     private ArrayList<Kurye> kuryeler;
@@ -72,7 +77,25 @@ public class AdminHomeScreen extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
+                errorLogsRef = database.getReference("Error_Logs");
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("ErrorCode", 79);
+                map.put("ErrorSource", "AdminHomeScreen Class");
+                map.put("ErrorTitle", "Kurye Listesi Alinmasi Sirasinda Hata");
+                map.put("ErrorDetailsFromDeveloper", "Admin Panelinde kuryelerin listelenmesi icin bilgiler cekilirken hata");
+                map.put("ErrorDetailsFromFirebase", error.getDetails());
+                map.put("HataAlanKuryeMail", FirebaseAuth.getInstance().getCurrentUser().getEmail());
 
+                errorLogsRef.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()){
+                            Log.d("error79", "basarili");
+                        } else {
+                            Toast.makeText(AdminHomeScreen.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         };
 
