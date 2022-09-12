@@ -10,22 +10,32 @@
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-hdpi/activity_admin_kurye_details_screen.xml" value="0.69625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-hdpi/activity_admin_kurye_map_details_screen.xml" value="0.69625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-hdpi/activity_home.xml" value="0.6522248243559718" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-hdpi/activity_login_screen.xml" value="0.6522248243559718" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-hdpi/activity_register_screen.xml" value="0.536" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_admin_home_screen.xml" value="0.81875" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_admin_kurye_details_screen.xml" value="0.9069148936170213" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_admin_kurye_map_details_screen.xml" value="0.8157894736842105" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_home.xml" value="1.740625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_login_screen.xml" value="1.740625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_register_screen.xml" value="0.9440677966101695" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_home_screen.xml" value="0.69625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_kurye_details_screen.xml" value="0.69625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_kurye_map_details_screen.xml" value="0.536" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_home.xml" value="0.43515625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_login_screen.xml" value="0.69625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_register_screen.xml" value="0.2113050075872534" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_home_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_kurye_details_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_kurye_map_details_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_home.xml" value="0.43515625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_login_screen.xml" value="0.43515625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_register_screen.xml" value="0.2113050075872534" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_home_screen.xml" value="0.13645833333333332" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_kurye_details_screen.xml" value="0.23803418803418802" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_kurye_map_details_screen.xml" value="0.23803418803418802" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_home.xml" value="0.43515625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_login_screen.xml" value="0.2113050075872534" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_register_screen.xml" value="0.2113050075872534" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_home_screen-ldpi.xml" value="0.13645833333333332" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_home_screen.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_kurye_details_screen.xml" value="0.25" />
