@@ -170,6 +170,16 @@ public class Home extends AppCompatActivity implements LocationListener {
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         String recordTimestapm = String.valueOf(Timestamp.from(Instant.ofEpochSecond(System.currentTimeMillis())).getTime());
 
+        reference.child(uuid).child("currentLOcation").setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()){
+                } else {
+                    System.out.println(task.getException().getLocalizedMessage());
+                    Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         reference.child(uuid).child(date).child(recordTimestapm).setValue(latLng)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

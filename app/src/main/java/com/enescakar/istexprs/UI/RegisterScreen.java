@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class RegisterScreen extends AppCompatActivity {
 
-    private TextInputEditText pass, passAgain, plaka, kuryeNo, eMail;
+    private TextInputEditText pass, passAgain, plaka, kuryeNo, eMail, tc, motor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +33,8 @@ public class RegisterScreen extends AppCompatActivity {
         plaka = findViewById(R.id.registerPlaka);
         kuryeNo = findViewById(R.id.registerKuryeNo);
         eMail = findViewById(R.id.registerMailText);
+        tc = findViewById(R.id.tc);
+        motor = findViewById(R.id.motorMarkaModel);
     }
 
     public void registerToLogin(View view){
@@ -40,7 +42,8 @@ public class RegisterScreen extends AppCompatActivity {
     }
 
     public void registerBtn(View view){
-        if (isEmptyText(eMail.getText().toString(), pass.getText().toString(), passAgain.getText().toString(), plaka.getText().toString(), kuryeNo.getText().toString())){
+        if (isEmptyText(eMail.getText().toString(), motor.getText().toString(), tc.getText().toString()
+                , pass.getText().toString(), passAgain.getText().toString(), plaka.getText().toString(), kuryeNo.getText().toString())){
             Toast.makeText(this, "Lutfen Bos Alan Birakmayin", Toast.LENGTH_SHORT).show();
         } else {
              FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -56,7 +59,10 @@ public class RegisterScreen extends AppCompatActivity {
                                  map.put("mail", eMail.getText().toString());
                                  map.put("pass", pass.getText().toString());
                                  map.put("plaka", plaka.getText().toString().toUpperCase());
+                                 map.put("motorMarkaModel", motor.getText().toString());
+                                 map.put("tc", tc.getText().toString());
                                  map.put("kuryeNo", kuryeNo.getText().toString());
+
                                  map.put("kuryeId", auth.getCurrentUser().getUid());
 
 
@@ -80,8 +86,8 @@ public class RegisterScreen extends AppCompatActivity {
         }
 
     }
-    private boolean isEmptyText (String mail, String pass, String passAgain, String plaka, String kuryeNo){
-        if (mail.matches("") || pass.matches("") || passAgain.matches("") || plaka.matches("") || kuryeNo.matches("")){
+    private boolean isEmptyText (String mail, String pass, String tc, String motor, String passAgain, String plaka, String kuryeNo){
+        if (motor.matches("") || tc.matches("") || mail.matches("") || pass.matches("") || passAgain.matches("") || plaka.matches("") || kuryeNo.matches("")){
             return true;
         }
         return false;

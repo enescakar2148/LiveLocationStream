@@ -80,6 +80,8 @@ public class AdminKuryeMapDetailsScreen extends AppCompatActivity implements OnM
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
+                locations.clear();
+
                 for (DataSnapshot ds : snapshot.getChildren()
                 ) {
                     HashMap<String, Object> loc = (HashMap<String, Object>) ds.getValue();

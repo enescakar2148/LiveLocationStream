@@ -2,11 +2,15 @@ package com.enescakar.istexprs.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.enescakar.istexprs.Model.Kurye;
@@ -35,6 +39,7 @@ public class AdminHomeScreen extends AppCompatActivity {
 
     private AdminRecyclerAdapter adminRecyclerAdapter;
     private RecyclerView recyclerView;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,8 @@ public class AdminHomeScreen extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home_screen);
 
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         kuryeler = new ArrayList<>();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Kuryeler");
@@ -100,5 +107,27 @@ public class AdminHomeScreen extends AppCompatActivity {
         };
 
         reference.addValueEventListener(eventListener);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(@NonNull Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+
+            case R.id.logOut:
+                FirebaseAuth.getInstance().signOut();
+                finish();
+                return true;
+            case R.id.showBigMap:
+                startActivity(new Intent(AdminHomeScreen.this, BigMap.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

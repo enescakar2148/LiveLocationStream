@@ -17,19 +17,19 @@
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_admin_kurye_map_details_screen.xml" value="0.8157894736842105" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_home.xml" value="1.740625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_login_screen.xml" value="1.740625" />
-        <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_register_screen.xml" value="0.9440677966101695" />
-        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_home_screen.xml" value="0.69625" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-ldpi/activity_register_screen.xml" value="1.0381944444444444" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_home_screen.xml" value="0.46763754045307443" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_kurye_details_screen.xml" value="0.69625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_admin_kurye_map_details_screen.xml" value="0.536" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_home.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_login_screen.xml" value="0.69625" />
-        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_register_screen.xml" value="0.2113050075872534" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-mdpi/activity_register_screen.xml" value="0.5439453125" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_home_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_kurye_details_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_admin_kurye_map_details_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_home.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_login_screen.xml" value="0.43515625" />
-        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_register_screen.xml" value="0.2113050075872534" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout-xhdpi/activity_register_screen.xml" value="0.43515625" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_home_screen.xml" value="0.13645833333333332" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_kurye_details_screen.xml" value="0.23803418803418802" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout-xxhdpi/activity_admin_kurye_map_details_screen.xml" value="0.23803418803418802" />
@@ -41,12 +41,14 @@
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_kurye_details_screen.xml" value="0.25" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_kurye_map_details_screen.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_admin_kurye_map_steram_screen.xml" value="0.29010416666666666" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_big_map.xml" value="0.22578125" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_login_screen.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/activity_register_screen.xml" value="0.29010416666666666" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/admin_recycler_item.xml" value="0.536" />
         <entry key="..\:/AndroidProjects/app/src/main/res/layout/kurye_location_item.xml" value="0.1" />
+        <entry key="..\:/AndroidProjects/app/src/main/res/menu/menu.xml" value="0.22578125" />
       </map>
     </option>
   </component>

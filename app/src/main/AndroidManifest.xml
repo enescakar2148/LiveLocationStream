@@ -19,6 +19,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".UI.BigMap"
+            android:exported="false" />
+        <activity
             android:name=".UI.AdminKuryeMapDetailsScreen"
             android:exported="false" />
         <activity

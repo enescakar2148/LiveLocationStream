@@ -18,7 +18,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Istanbul Express Kurye"
-        app:titleTextColor="#fff" />
+        app:titleTextColor="#fff"
+        app:menu="@menu/menu"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/adminRecyclerView"

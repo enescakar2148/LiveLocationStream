@@ -111,6 +111,56 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxStrokeColor="#FFF"
+            app:boxBackgroundColor="#FFF"
+            android:background="@drawable/edittext_back"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/motorMarkaModel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="Motosiklet Marka Model"
+                android:inputType="text"
+                android:maxLines="1"
+                tools:ignore="HardcodedText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:boxStrokeWidth="0dp"
+            app:boxStrokeWidthFocused="0dp"
+            app:boxStrokeColor="#FFF"
+            app:boxBackgroundColor="#FFF"
+            android:background="@drawable/edittext_back"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tc"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:hint="T.C Kimlik Numarasi"
+                android:inputType="number"
+                android:maxLines="1"
+                tools:ignore="HardcodedText" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:layout_margin="10dp"
             android:layout_width="match_parent"
