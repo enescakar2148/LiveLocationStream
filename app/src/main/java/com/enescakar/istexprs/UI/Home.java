@@ -45,23 +45,19 @@ import java.util.Map;
 
 public class Home extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
-    private static final int GPS_TIME_INTERVAL = 1000 * 60 * 5; // get gps location every 1 min
+    private static final int GPS_TIME_INTERVAL = 1000 * 60 ; // get gps location every 1 min
     private static final int GPS_DISTANCE = 1000; // set the distance value in meter
-    private static final int HANDLER_DELAY = 1000 * 60;
+    private static final int HANDLER_DELAY = 1000 * 15;
     private static final int START_HANDLER_DELAY = 0;
 
 
     final static String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     final static int PERMISSION_ALL = 1;
-    private Handler handler = new Handler();
 
     private FirebaseDatabase database;
-    private DatabaseReference reference,  errorLogsRef;
+    private DatabaseReference reference, errorLogsRef;
     private String uuid;
     private String date;
-    private Button button;
-
-    boolean handlerIsStart = true;
     private TextView dateText, kuryeNoText, plakaText;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -72,7 +68,6 @@ public class Home extends AppCompatActivity implements LocationListener {
 
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Locations");
-        button = findViewById(R.id.button);
 
         date = String.valueOf(LocalDate.now());
 
@@ -88,7 +83,7 @@ public class Home extends AppCompatActivity implements LocationListener {
         reference.child(uuid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot != null){
+                if (snapshot != null) {
                     HashMap<String, Object> map = (HashMap<String, Object>) snapshot.getValue();
                     kuryeNoText.setText(map.get("kuryeNo") + " Numarali Kurye");
                     plakaText.setText(String.valueOf(map.get("plaka")));
@@ -110,7 +105,7 @@ public class Home extends AppCompatActivity implements LocationListener {
                 errorLogsRef.child(uuid).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Log.d("error98", "basarili");
                         } else {
                             Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -126,54 +121,47 @@ public class Home extends AppCompatActivity implements LocationListener {
         }
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                requestLocation();
+                handler.postDelayed(this, HANDLER_DELAY);
+            }
+        }, START_HANDLER_DELAY);
     }
 
-    public void kuryeStartStop(View view) {
-
-        if (handlerIsStart) {
-            handler.removeCallbacksAndMessages(null);
-            handlerIsStart = !handlerIsStart;
-            button.setText("Kaydi Baslat");
-        } else {
-            handler.postDelayed(new Runnable() {
-                public void run() {
-                    requestLocation();
-                    handler.postDelayed(this, HANDLER_DELAY);
-                }
-            }, START_HANDLER_DELAY);
-            handlerIsStart = !handlerIsStart;
-            button.setText("Kaydi Durdur");
-
-        }
-    }
 
     @Override
     public void onProviderEnabled(@NonNull String provider) {
+        System.out.println(provider);
 
     }
 
     @Override
     public void onProviderDisabled(@NonNull String provider) {
+        System.out.println(provider);
 
     }
 
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
+        System.out.println(status);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onLocationChanged(@NonNull Location location) {
+        System.out.println(location.getLatitude());
         Toast.makeText(Home.this, "Konum Basariyla Alindi...", Toast.LENGTH_SHORT).show();
+
 
         LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
         String recordTimestapm = String.valueOf(Timestamp.from(Instant.ofEpochSecond(System.currentTimeMillis())).getTime());
 
-        reference.child(uuid).child("currentLOcation").setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
+        reference.child(uuid).child("currentLocation").setValue(latLng).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                 } else {
                     System.out.println(task.getException().getLocalizedMessage());
                     Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -184,7 +172,8 @@ public class Home extends AppCompatActivity implements LocationListener {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {;
+                        if (task.isSuccessful()) {
+                            ;
                         } else {
                             System.out.println(task.getException().getLocalizedMessage());
                             Toast.makeText(Home.this, task.getException().getLocalizedMessage(), Toast.LENGTH_SHORT).show();
@@ -212,29 +201,20 @@ public class Home extends AppCompatActivity implements LocationListener {
         if (grantResults.length > 0 &&
                 grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            if (handlerIsStart) {
-                handler.removeCallbacksAndMessages(null);
-                handlerIsStart = !handlerIsStart;
-                button.setText("Kaydi Baslat");
-
-
-            } else {
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        requestLocation();
-                        handler.postDelayed(this, HANDLER_DELAY);
-                    }
-                }, START_HANDLER_DELAY);
-                handlerIsStart = !handlerIsStart;
-                button.setText("Kaydi Durdur");
-            }
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                public void run() {
+                    requestLocation();
+                    handler.postDelayed(this, HANDLER_DELAY);
+                }
+            }, START_HANDLER_DELAY);
         } else {
             finish();
         }
 
     }
 
-    public void kuryeLogOut(View view){
+    public void kuryeLogOut(View view) {
         Toast.makeText(this, "Cikis Yapildi...", Toast.LENGTH_SHORT).show();
         FirebaseAuth.getInstance().signOut();
         startActivity(new Intent(Home.this, LoginScreen.class));

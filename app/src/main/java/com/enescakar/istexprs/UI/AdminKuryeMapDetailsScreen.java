@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polygon;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -85,7 +86,7 @@ public class AdminKuryeMapDetailsScreen extends AppCompatActivity implements OnM
                 for (DataSnapshot ds : snapshot.getChildren()
                 ) {
                     HashMap<String, Object> loc = (HashMap<String, Object>) ds.getValue();
-                    locations.add(new Locations(loc.get("latitude").toString(), loc.get("longitude").toString()));
+                    locations.add(new Locations(Double.parseDouble(loc.get("latitude").toString()), Double.parseDouble(loc.get("longitude").toString())));
                 }
 
                 for (int i =0; i<locations.size(); i++) {
@@ -147,6 +148,9 @@ public class AdminKuryeMapDetailsScreen extends AppCompatActivity implements OnM
 
         googleMap.setOnPolylineClickListener(this);
         googleMap.setOnPolygonClickListener(this);
+        googleMap.addMarker(new MarkerOptions().title("Baslangic Konumu").position(new LatLng(Double.parseDouble(locations.get(0).getLatitude()), Double.parseDouble(locations.get(0).getLongitude()))));
+        googleMap.addMarker(new MarkerOptions().title("En Son Konum").position(new LatLng(Double.parseDouble(locations.get(locations.size()-1).getLatitude()), Double.parseDouble(locations.get(locations.size()-1).getLongitude()))));
+
     }
 
     @Override

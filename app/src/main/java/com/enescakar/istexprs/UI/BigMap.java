@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -37,26 +40,24 @@ import java.util.Map;
 public class BigMap extends AppCompatActivity implements OnMapReadyCallback {
 
     private SupportMapFragment mapFragment;
-    private ArrayList<Locations> locations;
 
     private FirebaseDatabase database;
-    private ArrayList<String> kuryeler;
+    private ArrayList<Kurye> kuryeler;
 
-    private DatabaseReference reference, errorLogsRef;
+    private DatabaseReference reference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_big_map);
 
 
-        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+        mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.bigMapFragment);
+        database = FirebaseDatabase.getInstance();
         reference = database.getReference("Locations");
-        locations = new ArrayList<>();
         kuryeler = new ArrayList<>();
 
 
         getKuries();
-        getLiveLocations();
 
     }
 
@@ -68,10 +69,39 @@ public class BigMap extends AppCompatActivity implements OnMapReadyCallback {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 HashMap<String, Object> kuries = (HashMap<String, Object>) snapshot.getValue();
 
+                kuryeler.clear();
                 for (Map.Entry<String, Object> kurye : kuries.entrySet()
                 ) {
                     HashMap<String, Object> kuryeDetails = (HashMap<String, Object>) kurye.getValue();
-                    kuryeler.add((String) kuryeDetails.get("kuryeNo"));
+
+                    ValueEventListener listener = new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                            if (snapshot.getValue() != null) {
+
+                                Map<String, Object> map = (Map<String, Object>) snapshot.getValue();
+
+                                if (map.get("currentLocation") != null){
+                                    HashMap<String, Object> map2 = (HashMap<String, Object>) map.get("currentLocation");
+                                    LatLng latLng = new LatLng((Double) map2.get("latitude"), (Double) map2.get("longitude"));
+                                    kuryeler.add(new Kurye((String) kuryeDetails.get("kuryeNo"), (String) kuryeDetails.get("mail"), (String) kuryeDetails.get("plaka"), (String) kuryeDetails.get("pass"), (String) kuryeDetails.get("kuryeId"), latLng, kuryeDetails.get("isim").toString(), kuryeDetails.get("soyIsim").toString()));
+
+                                } else{
+
+                                }
+                            }
+                            mapFragment.getMapAsync(BigMap.this);
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                            Toast.makeText(BigMap.this, error.getDetails(), Toast.LENGTH_SHORT).show();
+                        }
+                    };
+                    reference.child(kuryeDetails.get("kuryeId").toString()).addValueEventListener(listener);
                 }
             }
 
@@ -81,47 +111,18 @@ public class BigMap extends AppCompatActivity implements OnMapReadyCallback {
 
             }
         };
-    }
-    private void getLiveLocations() {
-        ValueEventListener listener;
-        for (String id: kuryeler) {
-             listener = new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                    System.out.println(snapshot.getValue());
-                    locations.clear();
-
-                    /*
-                    for (DataSnapshot ds : snapshot.getChildren()
-                    ) {
-                        HashMap<String, Object> loc = (HashMap<String, Object>) ds.getValue();
-                        locations.add(new Locations(loc.get("latitude").toString(), loc.get("longitude").toString()));
-                    }
-*/
-                    mapFragment.getMapAsync(BigMap.this);
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                    Toast.makeText(BigMap.this, error.getDetails(), Toast.LENGTH_SHORT).show();
-                }
-            };
-            reference.child(id).addValueEventListener(listener);
-
-        }
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Kuryeler");
+        reference.addValueEventListener(eventListener);
     }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        for (Locations location: locations
+        for (Kurye kurye: kuryeler
              ) {
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(location.getLatitude()), Double.parseDouble(location.getLongitude()))));
+            googleMap.addMarker(new MarkerOptions().title(kurye.getIsim() + " " + kurye.getSoyIsim() + " (" + kurye.getKuryeNo() + ")").position(new LatLng(kurye.getCurrentLocation().latitude, kurye.getCurrentLocation().longitude))).showInfoWindow();
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(kurye.getCurrentLocation().latitude, kurye.getCurrentLocation().longitude), 6));
         }
-
     }
 
 }

@@ -22,7 +22,7 @@ import java.util.Locale;
 
 public class RegisterScreen extends AppCompatActivity {
 
-    private TextInputEditText pass, passAgain, plaka, kuryeNo, eMail, tc, motor;
+    private TextInputEditText isim, soyIsim, pass, passAgain, plaka, kuryeNo, eMail, tc, motor, adress, motorRenk, telefon, ikincilTelefon, ehliyetNo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,15 @@ public class RegisterScreen extends AppCompatActivity {
         eMail = findViewById(R.id.registerMailText);
         tc = findViewById(R.id.tc);
         motor = findViewById(R.id.motorMarkaModel);
+        motorRenk = findViewById(R.id.motorRenk);
+        adress = findViewById(R.id.adress);
+        telefon = findViewById(R.id.phone);
+        ikincilTelefon = findViewById(R.id.phone2);
+        ehliyetNo = findViewById(R.id.ehliyetNo);
+        isim = findViewById(R.id.isim);
+        soyIsim = findViewById(R.id.soyIsim);
+
+
     }
 
     public void registerToLogin(View view){
@@ -42,7 +51,7 @@ public class RegisterScreen extends AppCompatActivity {
     }
 
     public void registerBtn(View view){
-        if (isEmptyText(eMail.getText().toString(), motor.getText().toString(), tc.getText().toString()
+        if (isEmptyText(isim.getText().toString(),soyIsim.getText().toString(), ehliyetNo.getText().toString(), adress.getText().toString(), telefon.getText().toString(), ikincilTelefon.getText().toString(), motorRenk.getText().toString(), eMail.getText().toString(), motor.getText().toString(), tc.getText().toString()
                 , pass.getText().toString(), passAgain.getText().toString(), plaka.getText().toString(), kuryeNo.getText().toString())){
             Toast.makeText(this, "Lutfen Bos Alan Birakmayin", Toast.LENGTH_SHORT).show();
         } else {
@@ -62,6 +71,13 @@ public class RegisterScreen extends AppCompatActivity {
                                  map.put("motorMarkaModel", motor.getText().toString());
                                  map.put("tc", tc.getText().toString());
                                  map.put("kuryeNo", kuryeNo.getText().toString());
+                                 map.put("telefon", telefon.getText().toString());
+                                 map.put("ikincilTelefon", ikincilTelefon.getText().toString());
+                                 map.put("motorRenk", motorRenk.getText().toString());
+                                 map.put("adress", adress.getText().toString());
+                                 map.put("surucuBelgesiNo", ehliyetNo.getText().toString());
+                                 map.put("isim", isim.getText().toString());
+                                 map.put("soyIsim", soyIsim.getText().toString());
 
                                  map.put("kuryeId", auth.getCurrentUser().getUid());
 
@@ -86,8 +102,8 @@ public class RegisterScreen extends AppCompatActivity {
         }
 
     }
-    private boolean isEmptyText (String mail, String pass, String tc, String motor, String passAgain, String plaka, String kuryeNo){
-        if (motor.matches("") || tc.matches("") || mail.matches("") || pass.matches("") || passAgain.matches("") || plaka.matches("") || kuryeNo.matches("")){
+    private boolean isEmptyText (String isim, String soyIsim, String ehliyetNo, String mail, String pass, String tc, String motor, String passAgain, String plaka, String kuryeNo, String adress, String phone, String phone2, String motorRenk){
+        if (isim.matches("") || soyIsim.matches("") || ehliyetNo.matches("") || adress.matches("") || phone.matches("") || phone2.matches("") || motorRenk.matches("") || motor.matches("") || tc.matches("") || mail.matches("") || pass.matches("") || passAgain.matches("") || plaka.matches("") || kuryeNo.matches("")){
             return true;
         }
         return false;

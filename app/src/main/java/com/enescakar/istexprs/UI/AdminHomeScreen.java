@@ -121,6 +121,7 @@ public class AdminHomeScreen extends AppCompatActivity {
 
             case R.id.logOut:
                 FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(AdminHomeScreen.this, LoginScreen.class));
                 finish();
                 return true;
             case R.id.showBigMap:

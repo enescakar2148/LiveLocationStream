@@ -76,10 +76,11 @@ public class AdminKuryeDetailsScreen extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot child : snapshot.getChildren()) {
-                    //Object object = child.getKey();
+                    if (!child.getKey().matches("currentLocation")){
 
-                    System.out.println(child.getKey());
-                    dateList.add(child.getKey());
+
+                        dateList.add(child.getKey());
+                    }
                 }
 
                 kuryeLocationCardRecyclerAdapter = new KuryeLocationCardRecyclerAdapter(AdminKuryeDetailsScreen.this, dateList, kuryeId);

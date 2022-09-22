@@ -9,196 +9,369 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logo"
-        tools:ignore="ContentDescription,MissingConstraints" />
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="5dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edittext_back"
-            app:boxBackgroundColor="#FFF"
-            app:boxStrokeColor="#FFF"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerMailText"
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/logo"
+                tools:ignore="ContentDescription,MissingConstraints" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Mail"
-                android:inputType="textEmailAddress"
-                tools:ignore="HardcodedText" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="5dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_back"
+                    app:boxBackgroundColor="#FFF"
+                    app:boxStrokeColor="#FFF"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerPassText"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registerMailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Mail"
+                        android:inputType="textEmailAddress"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registerPassText"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Sifre"
+                        android:inputType="textPassword"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registerPassTextAgain"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Sifre Tekrar"
+                        android:inputType="textPassword"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registerPlaka"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Plaka"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/isim"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Isim"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/soyIsim"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Soy Isim"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/motorMarkaModel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Motosiklet Marka Model"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/motorRenk"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Motosiklet Rengi"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/adress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Adress"
+                        android:inputType="textMultiLine"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Telefon Numarasi"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/phone2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Ikincil Telefon Numarasi"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tc"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="T.C Kimlik Numarasi"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ehliyetNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Ehliyet Belge Numarasi"
+                        android:inputType="phone"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxStrokeWidth="0dp"
+                    app:boxStrokeWidthFocused="0dp"
+                    app:boxStrokeColor="#FFF"
+                    app:boxBackgroundColor="#FFF"
+                    android:background="@drawable/edittext_back"
+                    >
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/registerKuryeNo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:hint="Kurye Numarasi"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        tools:ignore="HardcodedText" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/outlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kayit Ol"
+                    android:textColor="#FFF"
+                    android:backgroundTint="#FFCB42"
+                    android:onClick="registerBtn"/>
+            </LinearLayout>
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Sifre"
-                android:inputType="textPassword"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerPassTextAgain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Sifre Tekrar"
-                android:inputType="textPassword"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerPlaka"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Plaka"
-                android:inputType="text"
-                android:maxLines="1"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/motorMarkaModel"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Motosiklet Marka Model"
-                android:inputType="text"
-                android:maxLines="1"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="T.C Kimlik Numarasi"
-                android:inputType="number"
-                android:maxLines="1"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_margin="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeWidth="0dp"
-            app:boxStrokeWidthFocused="0dp"
-            app:boxStrokeColor="#FFF"
-            app:boxBackgroundColor="#FFF"
-            android:background="@drawable/edittext_back"
-            >
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/registerKuryeNo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent"
-                android:hint="Kurye Numarasi"
-                android:inputType="number"
-                android:maxLines="1"
-                tools:ignore="HardcodedText" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/outlinedButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Kayit Ol"
-            android:textColor="#FFF"
-            android:backgroundTint="#FFCB42"
-            android:onClick="registerBtn"/>
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Giris Yap"
-        android:textAlignment="center"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:onClick="registerToLogin"/>
+                android:layout_height="wrap_content"
+                android:text="Giris Yap"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:onClick="registerToLogin"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -4,9 +4,12 @@ public class Locations {
     private String latitude;
     private String longitude;
 
-    public Locations(String latitude, String longitude) {
-        this.latitude = latitude;
-        this.longitude = longitude;
+    public Locations(){}
+
+
+    public Locations(Double latitude, Double longitude) {
+        this.latitude = latitude.toString();
+        this.longitude = longitude.toString();
     }
 
     public String getLatitude() {
